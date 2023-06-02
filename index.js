@@ -84,7 +84,7 @@ var Typer = {
 };
 
 function replaceUrls(text) {
-    var http = text.indexOf('http://');
+    var http = text.indexOf('https://');
     var space = text.indexOf('.me ', http);
 
     if (space != -1) {
