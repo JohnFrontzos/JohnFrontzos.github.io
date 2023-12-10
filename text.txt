@@ -9,6 +9,6 @@ If you think we can collaborate, please feel free to contact me in the below lin
 <span id="b">./links/</span>
 ├── <a href="https://github.com/JohnFrontzos/" target="_blank" rel="noopener noreferrer">github</a>
 ├── <a href="https://www.linkedin.com/in/ioannisfrontzos/" target="_blank" rel="noopener noreferrer">linkedin</a>
-└── <a href="mailto:jfrontzos@pm.me" target="_blank" rel="noopener noreferrer">email</a>
+└── <a href="mailto:john@frontz.dev" target="_blank" rel="noopener noreferrer">email</a>
 <span id="a">jfrontzos@web</span>:<span id="b">~/profile</span><span id="c">$</span> cd
 <span id="a">jfrontzos@web</span>:<span id="b">~</span><span id="c">$</span>
