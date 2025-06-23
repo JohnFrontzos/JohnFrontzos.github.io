@@ -190,9 +190,13 @@ function initNavbarScroll() {
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.12)';
+            navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.25)';
+            navbar.style.boxShadow = '0 16px 48px rgba(0, 0, 0, 0.5)';
         } else {
-            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.08)';
+            navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
+            navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.4)';
         }
     });
 }
