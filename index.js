@@ -201,42 +201,6 @@ function initNavbarScroll() {
     });
 }
 
-// Cursor following effect (bonus feature)
-function initCursorEffect() {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-follower';
-    cursor.style.cssText = `
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        mix-blend-mode: difference;
-        transition: transform 0.1s ease;
-    `;
-    
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-
-    // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('button, a, .service-card, .feature-item, .advantage-card');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-        });
-        
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-        });
-    });
-}
 
 // Parallax effect for hero shapes
 function initParallaxEffect() {
@@ -253,30 +217,6 @@ function initParallaxEffect() {
     });
 }
 
-// Service card tilt effect
-function initTiltEffect() {
-    const cards = document.querySelectorAll('.service-card, .advantage-card, .case-study-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    });
-}
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -286,9 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScrolling();
     initScrollAnimations();
     initNavbarScroll();
-    initCursorEffect();
     initParallaxEffect();
-    initTiltEffect();
     
     // Set initial language
     updateLanguage();
