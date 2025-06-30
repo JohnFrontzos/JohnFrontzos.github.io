@@ -13,6 +13,8 @@ This is a static multilingual (Greek/English) website for Frontz Technologies, a
 - **Languages**: Bilingual support (Greek/English) with dynamic language switching
 - **Assets**: Video background, PNG images for case studies
 - **Structure**: Single-page application with modal contact form
+- **Form Backend**: Web3Forms API integration for contact form submissions
+- **Deployment**: Cloudflare Pages with automatic deployment from GitHub
 
 ## Key Files
 
@@ -28,7 +30,11 @@ Since this is a static website, no build process is required:
 
 - **Local Development**: Open `index.html` directly in browser or use a local server
 - **Testing**: Manual testing in browser (no automated tests configured)
-- **Deployment**: Upload files to web server or use GitHub Pages
+- **Deployment**: Automatic deployment via Cloudflare Pages from `frontz-tech` branch
+- **Git Commands**: 
+  - `git add .` - Stage changes
+  - `git commit -m "message"` - Commit changes
+  - `git push origin frontz-tech` - Deploy to production
 
 ## Core Functionality
 
@@ -48,7 +54,8 @@ Since this is a static website, no build process is required:
 - Language toggle button (top-right)
 - Contact modal triggered by CTA buttons
 - Smooth navigation scrolling
-- Form submission with loading states
+- Real form submission with Web3Forms API integration
+- Loading states and success/error feedback
 - Navbar transparency changes on scroll
 
 ## Design System
@@ -70,12 +77,33 @@ Since this is a static website, no build process is required:
 - **SEO Optimization**: Comprehensive meta tags, structured data (JSON-LD), and Open Graph tags
 - **Accessibility**: Semantic HTML structure and proper form labels
 
-## Form Handling
+## Contact Form Integration
 
-The contact form currently uses a placeholder submission (setTimeout simulation). For production:
-- Replace the simulated submission in `initForm()` with actual API endpoint
-- Add server-side validation and email sending functionality
-- Consider adding form validation and error handling
+The contact form uses **Web3Forms API** for real email notifications:
+
+### Configuration
+- **API Key**: `0e01bbc2-3165-47e2-910d-e5b5f4c295c2` (configured in HTML)
+- **Endpoint**: `https://api.web3forms.com/submit`
+- **Email Subject**: "New Contact Form Submission from Frontz Technologies Website"
+- **Sender Name**: "Frontz Technologies Contact Form"
+
+### Features
+- Real-time form submission with proper error handling
+- Bilingual success/error messages (Greek/English)
+- Spam protection via honeypot field (`botcheck`)
+- Loading states and user feedback
+- Automatic email notifications to registered email address
+
+### Form Fields
+- **Name**: Required text input
+- **Email**: Required email input with validation
+- **Message**: Required textarea
+- **Hidden Fields**: access_key, subject, from_name, botcheck (spam protection)
+
+### Security
+- Web3Forms API key is domain-restricted (safe for client-side use)
+- Honeypot field prevents basic spam submissions
+- Client-side and server-side validation
 
 ## Performance Considerations
 
@@ -89,3 +117,32 @@ The contact form currently uses a placeholder submission (setTimeout simulation)
 - Modern browsers with CSS Grid and Flexbox support
 - Requires backdrop-filter support for glassmorphism effects
 - Uses ES6+ JavaScript features (arrow functions, const/let, template literals)
+- Fetch API for form submissions (modern browser support)
+
+## Deployment Information
+
+### Git Configuration
+- **Repository**: https://github.com/JohnFrontzos/JohnFrontzos.github.io.git
+- **Branch**: `frontz-tech`
+- **Git User**: John Frontzos <john@frontz.tech>
+
+### Cloudflare Pages
+- **Auto-deployment**: Enabled from `frontz-tech` branch
+- **Build Command**: None (static site)
+- **Output Directory**: Root directory
+- **Deploy Time**: ~1-2 minutes after push
+
+### Domain
+- **Production URL**: https://frontz.tech
+- **Staging**: Automatic preview deployments for non-production branches
+
+## Testing Contact Form
+
+After deployment, test the contact form by:
+1. Visiting the live site
+2. Clicking "Contact Us" or "Let's Talk" buttons
+3. Filling out the form with test data
+4. Verifying email notification receipt
+5. Checking success message display
+
+Email notifications should arrive within seconds of form submission.
