@@ -114,23 +114,92 @@ function initForm() {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
 
-        // Simulate form submission (replace with actual endpoint)
-        setTimeout(() => {
-            alert(currentLanguage === 'en' ? 
-                'Thank you for your message! We\'ll get back to you soon.' : 
-                'Ευχαριστούμε για το μήνυμά σας! Θα επικοινωνήσουμε σύντομα μαζί σας.'
-            );
+        try {
+            // Get form data
+            const formData = new FormData(contactForm);
             
-            // Reset form
-            contactForm.reset();
+            // Submit to Web3Forms API
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Success message
+                showMessage(
+                    currentLanguage === 'en' ? 
+                        'Thank you for your message! We\'ll get back to you soon.' : 
+                        'Ευχαριστούμε για το μήνυμά σας! Θα επικοινωνήσουμε σύντομα μαζί σας.',
+                    'success'
+                );
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Close modal after short delay
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }, 2000);
+            } else {
+                throw new Error(result.message || 'Form submission failed');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            
+            // Error message
+            showMessage(
+                currentLanguage === 'en' ? 
+                    'Sorry, there was an error sending your message. Please try again.' : 
+                    'Λυπούμαστε, υπήρξε σφάλμα κατά την αποστολή του μηνύματός σας. Παρακαλώ δοκιμάστε ξανά.',
+                'error'
+            );
+        } finally {
+            // Remove loading state
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
-            
-            // Close modal
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }, 2000);
+        }
     });
+}
+
+// Show success/error messages
+function showMessage(message, type) {
+    // Create message element if it doesn't exist
+    let messageEl = document.getElementById('form-message');
+    if (!messageEl) {
+        messageEl = document.createElement('div');
+        messageEl.id = 'form-message';
+        messageEl.style.cssText = `
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        `;
+        contactForm.appendChild(messageEl);
+    }
+    
+    // Style based on type
+    if (type === 'success') {
+        messageEl.style.backgroundColor = 'rgba(34, 197, 94, 0.1)';
+        messageEl.style.color = '#22c55e';
+        messageEl.style.border = '1px solid rgba(34, 197, 94, 0.3)';
+    } else {
+        messageEl.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+        messageEl.style.color = '#ef4444';
+        messageEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+    }
+    
+    messageEl.textContent = message;
+    messageEl.style.display = 'block';
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+        messageEl.style.display = 'none';
+    }, 5000);
 }
 
 // Smooth scrolling for navigation links

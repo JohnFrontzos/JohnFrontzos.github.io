@@ -368,7 +368,14 @@
             <p class="modal-subtitle" data-en="Ready to transform your business with AI? Get in touch with us today." data-el="Έτοιμοι να μεταμορφώσετε την επιχείρησή σας με AI; Επικοινωνήστε μαζί μας σήμερα.">
                 Ready to transform your business with AI? Get in touch with us today.
             </p>
-            <form id="contact-form" class="contact-form">
+            <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Web3Forms Configuration -->
+                <input type="hidden" name="access_key" value="0e01bbc2-3165-47e2-910d-e5b5f4c295c2">
+                <input type="hidden" name="subject" value="New Contact Form Submission from Frontz Technologies Website">
+                <input type="hidden" name="from_name" value="Frontz Technologies Contact Form">
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
                 <div class="form-group">
                     <input type="text" id="name" name="name" required>
                     <label for="name" data-en="Your Name" data-el="Το Όνομά σας">Your Name</label>
