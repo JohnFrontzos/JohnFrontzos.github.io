@@ -735,6 +735,10 @@ section {
 .case-study-tech {
     margin: 0 30px 30px;
     text-align: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .tech-link {
