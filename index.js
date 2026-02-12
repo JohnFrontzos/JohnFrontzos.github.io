@@ -39,7 +39,7 @@ function initModal() {
 
     triggers.forEach(btn => {
         // Skip form submit button
-        if (btn.type === 'submit') return;
+        if (btn.closest('form')) return;
         btn.addEventListener('click', (e) => {
             // Skip anchor links
             if (btn.tagName === 'A') return;

@@ -269,6 +269,10 @@ body {
     margin-bottom: 24px;
 }
 
+.hero-title .dot {
+    color: #0a714e;
+}
+
 .hero-subtitle {
     font-size: 1.15rem;
     line-height: 1.7;
@@ -300,7 +304,7 @@ body {
 .story-body {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
 }
 
 .story-body p {
