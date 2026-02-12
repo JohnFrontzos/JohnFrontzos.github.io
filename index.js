@@ -22,8 +22,8 @@ function updateLanguage() {
     const elements = document.querySelectorAll('[data-en][data-el]');
     elements.forEach(el => {
         const text = el.getAttribute(currentLanguage === 'en' ? 'data-en' : 'data-el');
-        // Use innerHTML for elements that contain <br> tags
-        if (text.includes('<br>')) {
+        // Use innerHTML for elements that contain HTML tags
+        if (text.includes('<br>') || text.includes('<a ')) {
             el.innerHTML = text;
         } else {
             el.textContent = text;

@@ -132,19 +132,10 @@ body {
     color: var(--text-on-dark);
 }
 
-.logo-mark {
-    width: 28px;
-    height: 28px;
-    background: var(--accent);
-    border-radius: 6px;
+.nav-logo-img {
+    height: 36px;
+    width: auto;
     display: block;
-    flex-shrink: 0;
-}
-
-.logo-text {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
 }
 
 .nav-links {
@@ -733,22 +724,36 @@ body {
     max-width: 280px;
 }
 
-.footer-brand .logo-mark {
-    margin-bottom: 12px;
-}
-
-.footer-name {
+.footer-logo-img {
+    height: 56px;
+    width: auto;
     display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-on-dark);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .footer-tagline {
     font-size: 0.85rem;
     color: var(--text-on-dark-secondary);
     line-height: 1.5;
+}
+
+.footer-creator {
+    font-size: 0.8rem;
+    color: var(--text-on-dark-muted);
+    line-height: 1.6;
+    margin-top: 12px;
+    max-width: 360px;
+}
+
+.footer-creator a {
+    color: var(--text-on-dark-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s var(--ease);
+}
+
+.footer-creator a:hover {
+    color: var(--text-on-dark);
 }
 
 .footer-links {
@@ -840,6 +845,10 @@ body {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+    }
+
+    .nav-logo-img {
+        height: 28px;
     }
 
     .hero {
