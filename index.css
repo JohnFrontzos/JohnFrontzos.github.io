@@ -457,10 +457,6 @@ body {
     padding-right: 120px;
 }
 
-.work-card:last-child:nth-child(odd) {
-    grid-column: span 2;
-}
-
 .work-card:hover {
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
